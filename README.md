@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example repo for lots of things! Currently it has:
 
-Things you may want to cover:
+- React and Webpacker
+- GraphQL
+- SOAP (wat)
+- And MORE
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# To run it:
+```
+ $ git clone <your fork>
+ $ bundle install
+ $ be rake db:{migrate,create,seed}
+ $ rails graphql:install
+ $ rails webpacker install --react
+```
