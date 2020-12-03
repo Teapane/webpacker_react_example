@@ -4,10 +4,12 @@ module Queries
 
     type Types::UserType, null: true
 
-    def resolve
-      user = User.all
-      if user
-        user
+    argument :id, Integer, required: true
+
+    def resolve(args)
+      users = User.find_by(id: args[:id])
+      if users
+        users
       else
         @errors = {errors: "Some errors"}
       end
