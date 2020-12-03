@@ -20,5 +20,5 @@ end
 
 
 puts "Creating Users"
-create_users(arr)
+create_users
 puts "User creation complete"
