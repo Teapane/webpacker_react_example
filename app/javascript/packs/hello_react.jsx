@@ -1,44 +1,93 @@
-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
-// of the page.
-
-import React from 'react'
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 
-const Hello = props => (
-  <div style={mainDiv}>
-    <h1> WORLD </h1>
-    <div style={divStyle}>
-      Hello {props.name}!
+function App() {
+  const [users, setUsers] = useState(null);
+
+  const fetchUsers = () => {
+    const data = axios({
+      url: 'http://localhost:3006/graphql',
+      method: 'post',
+      data: {
+        query: `
+          {
+            allUsers {
+              id
+              username
+              createdAt
+              updatedAt
+            }
+          }
+          `
+      }
+    }).then((result) => {
+      if(result.data) {
+        setUsers(result.data.data.allUsers);
+      }
+    });
+  }
+
+  const mainDiv = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }
+  const divStyle = {
+    display: 'flex',
+    padding: '20px',
+    color: 'blue',
+  };
+
+  const usersDiv = {
+    background: 'green',
+    display: 'flex'
+  }
+
+  const userSpan = {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '18px',
+    borderBottom: '8px solid white'
+  }
+
+  return (
+    <div id="root" style={mainDiv}>
+      <h1> LOOK AT ALL THE USERS </h1>
+      <div style={divStyle}>
+        <button onClick={fetchUsers}>GET USERS</button>
+      </div>
+        <div>
+          {users &&
+              users.map((x, index) => {
+                return (
+                  <div style={usersDiv} key={index}>
+                    <span style={userSpan}>
+                      <p>
+                        {`ID: ${x.id}`}
+                      </p>
+                      <p>
+                        {`user: ${x.username}`}
+                      </p>
+                      <p>
+                        {`Created: ${x.createdAt}`}
+                      </p>
+                      <p>
+                        {`Updated: ${x.updatedAt}`}
+                      </p>
+                    </span>
+                  </div>
+                );
+              })
+          }
+      </div>
     </div>
-  </div>
-)
-
-Hello.defaultProps = {
-  name: 'Tyler'
+  )
 }
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
-
-const mainDiv = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center'
-}
-const divStyle = {
-  display: 'flex',
-  padding: '20px',
-  color: 'blue',
-};
-
-
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello/>,
+    <App />,
     document.body.appendChild(document.createElement('div')),
   )
 })
-

@@ -12,6 +12,5 @@ module Types
 
    field :users, resolver: Queries::Users
    field :allUsers, resolver: Queries::AllUsers
-   field :allPosts, resolver: Queries::AllPosts
   end
 end
