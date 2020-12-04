@@ -27,13 +27,14 @@ function App() {
         setUsers(result.data.data.allUsers);
       }
     });
-  }
+  };
 
   const mainDiv = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
-  }
+  };
+
   const divStyle = {
     display: 'flex',
     padding: '20px',
@@ -43,14 +44,14 @@ function App() {
   const usersDiv = {
     background: 'green',
     display: 'flex'
-  }
+  };
 
   const userSpan = {
     display: 'flex',
     flexDirection: 'column',
     padding: '18px',
     borderBottom: '8px solid white'
-  }
+  };
 
   return (
     <div id="root" style={mainDiv}>
@@ -68,7 +69,7 @@ function App() {
                         {`ID: ${x.id}`}
                       </p>
                       <p>
-                        {`user: ${x.username}`}
+                        {`UserName: ${x.username}`}
                       </p>
                       <p>
                         {`Created: ${x.createdAt}`}
@@ -79,15 +80,17 @@ function App() {
                     </span>
                   </div>
                 );
-              })
-          }
+              }
+            )
+          };
       </div>
     </div>
-  )
-}
+  );
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <App />,
     document.body.appendChild(document.createElement('div')),
-  )
-})
+  );
+});
