@@ -1,6 +1,6 @@
 module Queries
   class User < Queries::BaseQuery
-    description "Get all the users"
+    description "GET a User by their ID(Primary Key)"
 
     type Types::UserType, null: true
 
