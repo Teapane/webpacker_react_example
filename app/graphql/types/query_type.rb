@@ -10,7 +10,7 @@ module Types
       "Hello World!"
     end
 
-   field :users, resolver: Queries::Users
+   field :user, resolver: Queries::User
    field :allUsers, resolver: Queries::AllUsers
   end
 end

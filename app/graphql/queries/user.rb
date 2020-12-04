@@ -1,5 +1,5 @@
 module Queries
-  class Users < Queries::BaseQuery
+  class User < Queries::BaseQuery
     description "Get all the users"
 
     type Types::UserType, null: true
@@ -7,9 +7,9 @@ module Queries
     argument :id, Integer, required: true
 
     def resolve(args)
-      users = User.find_by(id: args[:id])
-      if users
-        users
+      user = User.find_by(id: args[:id])
+      if user
+        user
       else
         @errors = {errors: "Some errors"}
       end
