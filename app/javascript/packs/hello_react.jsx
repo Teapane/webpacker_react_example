@@ -6,8 +6,8 @@ import axios from 'axios'
 function App() {
   const [users, setUsers] = useState(null);
 
-  const fetchUsers = () => {
-    const data = axios({
+  const fetchUsers = async() => {
+    const data = await axios({
       url: 'http://localhost:3006/graphql',
       method: 'post',
       data: {
@@ -26,7 +26,9 @@ function App() {
       if(result.data) {
         setUsers(result.data.data.allUsers);
       }
-    });
+    }).catch((e) => {
+      console.error(e);
+    })
   };
 
   const mainDiv = {
