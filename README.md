@@ -11,7 +11,7 @@ This is an example repo for lots of things! Currently it has:
 ```
  $ git clone <your fork>
  $ bundle install
- $ be rake db:{migrate,create,seed}
+ $ be rake db:setup
  $ rails graphql:install
- $ rails webpacker install --react
+ $ bundle exec rails webpacker:install:react
 ```
