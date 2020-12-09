@@ -32,6 +32,11 @@ def generate_posts
     Post.create!(user_id: user_id, title: x)
   end
 end
+
+def feature_three(foo)
+  puts "foo"
+  puts "testing rebaser"
+end
 puts "Creating Users"
 create_users
 puts "User creation complete"
