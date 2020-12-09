@@ -7,7 +7,7 @@ module Queries
     argument :id, Integer, required: true
 
     def resolve(args)
-      user = User.find_by(id: args[:id])
+      user = ::User.find_by(id: args[:id])
       if user
         user
       else
