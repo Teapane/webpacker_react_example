@@ -23,6 +23,6 @@ describe "User Query" do
           }
         }
       }
-                          )
+    )
   end
 end
