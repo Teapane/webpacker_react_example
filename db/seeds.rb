@@ -33,10 +33,6 @@ def generate_posts
   end
 end
 
-def feature_three(foo)
-  puts "foo"
-  puts "testing rebaser"
-end
 puts "Creating Users"
 create_users
 puts "User creation complete"
