@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import UpdateUsers from './update_user';
 
 function App() {
+  // state, setState
   const [users, setUsers] = useState(null);
 
+  // fetch async
   const fetchUsers = async() => {
     const data = await axios({
       url: 'http://localhost:3006/graphql',
@@ -30,6 +33,12 @@ function App() {
       console.error(e);
     })
   };
+
+  const renderUserUpdate = () => {
+    return (
+      console.log('foo')
+    )
+  }
 
   const mainDiv = {
     display: 'flex',
@@ -70,9 +79,9 @@ function App() {
                       <p>
                         {`ID: ${x.id}`}
                       </p>
-                      <p>
+                      <button onClick={renderUserUpdate()}>
                         {`UserName: ${x.username}`}
-                      </p>
+                      </button>
                       <p>
                         {`Created: ${x.createdAt}`}
                       </p>
