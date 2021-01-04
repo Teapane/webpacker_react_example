@@ -18,9 +18,6 @@ def create_users
   end
 end
 
-# [4] pry(main)> Post
-# => Post(id: integer, user_id: integer, title: string, created_at: datetime, updated_at: datetime)
-#
 def generate_posts
   arr = []
   1000.times do
