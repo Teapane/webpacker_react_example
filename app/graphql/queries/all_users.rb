@@ -4,10 +4,8 @@ module Queries
 
     type [Types::UserType], null: true
 
-    # argument :id, Integer, required: false
-
     def resolve
-      users = User.all
+      users = ::User.all
       if users
         users
       else
