@@ -5,12 +5,12 @@ module Mutations
     argument :id, ID, required: true
     argument :username, String, required: false
 
-    type Types::UserType
+    field :update_user, Types::UserType, null: true
 
     def resolve(args)
       user = User.find(args[:id])
       user.update(args)
-      {user: user}
+      {update_user: user}
     end
   end
 end
