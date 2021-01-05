@@ -6,13 +6,11 @@ describe "User Update" do
     user_id = user.id
     query_string = <<-GRAPHQL
       mutation {
-        updateUser(
-          id: "#{user_id}",
+        updateUser(input:{
+          id: #{user_id},
           username: "Albus Dumbledore"
-        ) {
-          user {
-            username
-          }
+        }) {
+          username
         }
       }
       GRAPHQL
@@ -22,7 +20,6 @@ describe "User Update" do
       expect(result).to eq({
         "data" => {
           "user" => {
-            "id"=>1,
             "username"=>"Albus Dumbledore"
           }
         }

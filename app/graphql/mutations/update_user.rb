@@ -1,15 +1,16 @@
 module Mutations
   class UpdateUser < Mutations::BaseMutation
     description "Update a User"
-    argument :id, String, required: true
+
+    argument :id, ID, required: true
     argument :username, String, required: false
 
-    field :user, Types::UserType, null: false
+    type Types::UserType
 
     def resolve(args)
-      binding.pry
       user = User.find(args[:id])
       user.update(args)
+      {user: user}
     end
   end
 end
