@@ -18,9 +18,6 @@ function App() {
           {
             allUsers {
               id
-              username
-              createdAt
-              updatedAt
             }
           }
           `

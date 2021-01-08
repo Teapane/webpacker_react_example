@@ -10,9 +10,7 @@ describe "User Update" do
           id: #{user_id},
           username: "Albus Dumbledore"
         }) {
-          updateUser {
-            username
-          }
+          username
         }
       }
       GRAPHQL
@@ -22,7 +20,7 @@ describe "User Update" do
       expect(result).to eq({
         "data" => {
           "updateUser" => {
-            "updateUser"=> {
+            "data"=> {
               "username" => "Albus Dumbledore"
             }
           }
